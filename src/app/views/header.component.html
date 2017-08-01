@@ -1,0 +1,89 @@
+<header class="main-header">
+                <nav class="navbar navbar-static-top principal" role="navigation">
+                    <button type="button" class="hamburger is-closed abrir-menu-mobile" data-toggle="offcanvas2" style="float:left">
+                        <span class="hamb-top"></span>
+                        <span class="hamb-middle"></span>
+                        <span class="hamb-bottom"></span>
+                    </button>
+                    <a class="nav-logo" href="/panelsandbox/"><img class="img-logo" src="/panelsandbox/img/Logotipo_C4B_blanco.png" alt=""></a>
+                    <div class="navbar-custom-menu">
+
+                        <ul id="w11" class="navbar-nav nav">
+                            <li class="user user-menu configuraciones dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-wrench" style="font-size:1.2em"></i>  Configuraciones <b class="caret"></b></a>
+                                <ul id="w12" class="dropdown-menu">
+                                    <li><a href="/panelsandbox/usuario/datos-usuario" tabindex="-1"><i class="fa fa-briefcase"></i>  Datos de la cuenta</a></li>
+                                    <li><a href="/panelsandbox/cuenta-bancaria/listado" tabindex="-1"><i class="fa fa-bank"></i>  Cuentas Bancarias</a></li>
+                                    <li><a href="/panelsandbox/usuario-autorizado/listado" tabindex="-1"><i class="fa fa-users"></i>  Administrar usuarios</a></li>
+                                </ul>
+                            </li>
+                            <li class="user user-menu dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-user" style="font-size:1.2em"></i>  <span class="hidden-xs">{{currentUser.Denominacion}}</span> <b class="caret"></b></a>
+                                <ul id="w13" class="dropdown-menu">
+                                 
+                                    <li class="user-body aydSucursales5">
+                                        <ul class="nav nav-pills nav-stacked">
+                                            <li>CUIT <b><span class="pull-right text-gray-active">{{currentUser.Cuit}}</span></b></li>
+                                            <li>Cuenta <b><span class="pull-right text-gray-active">{{currentUser.Denominacion}}</span></b></li>
+                                        </ul>
+                                    </li>
+                                    <li class="user-footer">
+                                        <!--<div class="pull-left">
+                                            <a class="btn btn-default" href="/panelsandbox/usuario/iniciar-tour?idTour=1"><i class="fa fa-question-circle"></i>  Tour</a>
+                                        </div>-->
+                                        <div class="pull-right">
+                                            <a class="btn btn-danger logout" [routerLink]="['/login']" data-method="post"><i class="fa fa-sign-out"></i>  Salir</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </nav>
+
+                <nav class="navbar navbar-static-top secundaria nav-premium-silver" role="navigation">
+                    <ul id="w14" class="navbar-nav nav">
+                        <li class="nav-boton-inicio"><a [routerLink]="['/home']"><i class="fa fa-home"></i>  <p class='nav-title'>Inicio</p></a></li>
+                        <!--<li class="nav-boton-comprobantes-emitidos dropdown"><a class="dropdown-toggle" href="/panelsandbox/comprobante/#" data-toggle="dropdown"><i class="fa fa-sign-out"></i>  <p class='nav-title'>Comprobantes Emitidos</p> <b class="caret"></b></a>
+                            <ul id="w15" class="dropdown-menu">
+                                <li><a href="/panelsandbox/comprobante/listado-emitidos" tabindex="-1"><i class="fa fa-th-list"></i> Emitidos</a></li>
+                            </ul>
+                        </li>-->
+                        <li class="nav-boton-comprobantes-recibidos dropdown"><a class="dropdown-toggle" [routerLink]="['/invoices/received']" data-toggle="dropdown"><i class="fa fa-sign-in"></i>  <p class='nav-title'>Comprobantes Recibidos</p> <b class="caret"></b></a>
+                            <!--<ul id="w16" class="dropdown-menu">
+                                <li class="active"><a [routerLink]="['/invoices/received']" tabindex="-1"><i class="fa fa-inbox"></i> Recibidos<span class="label label-success margin5left"></span></a></li>
+                            </ul>-->
+                        </li>
+                        <!--<li class="nav-boton-saldo"><a href="/panelsandbox/credito/index"><i class="fa fa-dollar"></i>  <p class='nav-title'>Saldo</p></a></li>
+                        <li class="nav-boton-productos-/-servicios dropdown"><a class="dropdown-toggle" href="/panelsandbox/comprobante/#" data-toggle="dropdown"><i class="fa fa-briefcase"></i>  <p class='nav-title'>Productos / Servicios</p> <b class="caret"></b></a>
+                            <ul id="w17" class="dropdown-menu">
+                                <li><a href="/panelsandbox/producto/listado" tabindex="-1"><i class="fa fa-cubes"></i> Productos</a></li>
+                                <li><a href="/panelsandbox/producto/nuevo" tabindex="-1"><i class="fa fa-plus"></i> Nuevo producto</a></li>
+                                <li><a href="/panelsandbox/producto/importar" tabindex="-1"><i class="fa fa-download"></i> Importar productos</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/panelsandbox/rubro/listado" tabindex="-1"><i class="fa fa-list"></i> Rubros</a></li>
+                                <li><a href="/panelsandbox/rubro/nuevo" tabindex="-1"><i class="fa fa-plus"></i> Nuevo rubro</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-boton-red-de-contactos dropdown"><a class="dropdown-toggle" href="/panelsandbox/comprobante/#" data-toggle="dropdown"><i class="fa fa-globe"></i>  <p class='nav-title'>Red de Contactos</p> <b class="caret"></b></a>
+                            <ul id="w18" class="dropdown-menu">
+                                <li><a href="/panelsandbox/cliente/listado" tabindex="-1"><i class="fa fa-th-list"></i> Contactos</a></li>
+                                <li><a href="/panelsandbox/cliente/nuevo" tabindex="-1"><i class="fa fa-plus"></i> Nuevo contacto</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/panelsandbox/cliente-categoria/listado" tabindex="-1"><i class="fa fa-th"></i> Categorías</a></li>
+                                <li><a href="/panelsandbox/cliente-categoria/nuevo" tabindex="-1"><i class="fa fa-plus"></i> Nueva categoría</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-boton-asesor dropdown"><a class="dropdown-toggle" href="/panelsandbox/ticket/listado" data-toggle="dropdown"><i class="fa fa-headphones"></i>  <p class='nav-title'>Asesor</p> <b class="caret"></b></a>
+                            <ul id="w19" class="dropdown-menu">
+                                <li><a href="/panelsandbox/ticket/listado" tabindex="-1"><i class="fa fa-th-list"></i> Tickets</a></li>
+                                <li><a href="/panelsandbox/ticket/nuevo" tabindex="-1"><i class="fa fa-plus"></i> Nuevo ticket</a></li>
+                            </ul>
+                        </li>-->
+                    </ul>
+                    <!--<ul id="w20" class="navbar-nav premium nav">
+                        <li><a href="/panelsandbox/usuario/listado-transacciones"><i class="fa fa-exchange"></i>  <p class='nav-title'>Transacciones</p></a></li>
+                    </ul>-->
+                </nav>
+
+            </header>

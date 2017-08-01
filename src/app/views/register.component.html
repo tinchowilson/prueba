@@ -1,0 +1,136 @@
+<div class="container">
+    <div class="col-md-5 col-sm-6 col-xs-12">
+        <div class="row highlight logo-area">
+            <div class="col-xs-12 text-center">
+                <img class="login-logo test" src="/paneltest/img/test-logo.png" alt=""> <br>
+                <img class="login-logo" src="/paneltest/img/Logotipo_C4B_blanco.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="container-top50 col-md-5 col-sm-5 col-xs-12 col-md-offset-1">
+        <div class="site-registro">
+            <div class="box box-info">
+                <div class="box-header with-border text-center">
+                    <h4 class="box-title">{{ title }}</h4>
+                </div>
+                <form (ngSubmit)="f.form.valid && register()" #f="ngForm">
+                    <div class="box-body" style="padding: 15px">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]="model.cuil" #cuil="ngModel" name="cuil" placeholder="Nro. CUIL" required
+                                        minlength="11" maxlength="11" data-toggle="tooltip" data-placement="left" title="Sólo ingrese números, por ejemplo: Si su CUIL es 30-11111111-8 ingrese 30111111118">
+                                    <!--<div class="help-block with-errors"></div>-->
+                                    <!--<div *ngIf="f.submitted && !cuil.valid" class="help-block with-errors">Nro. CUIL no puede estar vacío.</div>-->
+                                    <div *ngIf="cuil.errors && (cuil.dirty || cuil.touched)" class="with-errors errors">
+                                        <div [hidden]="!cuil.errors.required">
+                                            Nro. CUIL no puede estar vacío.
+                                        </div>
+                                        <div [hidden]="!cuil.errors.minlength">
+                                            Nro. CUIL debe ser un número entero y contener 11 dígitos.
+                                        </div>
+                                        <div [hidden]="!cuil.errors.maxlength">
+                                            Nro. CUIL debe ser un número entero y contener 11 dígitos.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group"><span class="input-group-addon"><i class="fa-fw fa fa-envelope"></i> </span>
+                                        <input type="email" [(ngModel)]="model.email" #email="ngModel" id="registro-email" class="form-control" name="email" placeholder="Email"
+                                            required pattern="^[a-zA-Z0–9_.+-]+@[a-zA-Z0–9-]+.[a-z]+$">
+                                    </div>
+                                    <!--<div class="help-block with-errors"></div>-->
+                                    <!--<div *ngIf="f.submitted && !email.valid" class="help-block with-errors">Email no puede estar vacío.</div>-->
+                                    <div *ngIf="email.errors && (email.dirty || email.touched)" class="with-errors errors">
+                                        <div [hidden]="!email.errors.required">
+                                            Email no puede estar vacío.
+                                        </div>
+                                        <div [hidden]="!email.errors.pattern">
+                                            Email no es una dirección de correo válida.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group"><span class="input-group-addon"><i class="fa-fw fa fa-lock"></i> </span>
+                                        <input type="password" id="clave" [(ngModel)]="model.clave" #clave="ngModel" class="form-control" name="clave" placeholder="Clave"
+                                            required validateEqual="reclave" reverse="true" minlength="6">
+                                    </div>
+
+                                    <!--<input type="password" class="form-control" [(ngModel)]="model.clave" #clave="ngModel" id="clave" name="clave" placeholder="Contraseña" required 
+                                data-required-error="Clave no puede estar vacío."
+                                data-minlength="6" data-minlength-error="Clave debería contener al menos 6 letras">-->
+                                    <!--<div class="help-block with-errors"></div>-->
+                                    <div *ngIf="clave.errors && (clave.dirty || clave.touched)" class="with-errors errors">
+                                        <div [hidden]="!clave.errors.required">
+                                            Clave no puede estar vacío.
+                                        </div>
+                                        <div [hidden]="!clave.errors.minlength">
+                                            Clave debería contener al menos 6 letras
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group">
+
+                                    <div class="input-group"><span class="input-group-addon"><i class="fa-fw fa fa-lock"></i> </span>
+                                        <input type="password" id="reclave" [(ngModel)]="model.reclave" #reclave="ngModel" class="form-control" name="reclave" placeholder="Clave"
+                                            required validateEqual="clave">
+                                    </div>
+
+                                    <!--<input type="password" class="form-control" [(ngModel)]="model.reclave" #reclave="ngModel" name="reclave" placeholder="Confirmar Contraseña" required 
+                                data-required-error="Confirmar clave no puede estar vacío."
+                                data-match="#clave" data-match-error="Confirmar clave debe ser igual a 'Clave'.">-->
+                                    <!--<div class="help-block with-errors"></div>-->
+                                    <div *ngIf="reclave.errors && (reclave.dirty || reclave.touched)" class="with-errors errors">
+                                        <div [hidden]="!reclave.errors.required">
+                                            Confirmar clave no puede estar vacío.
+                                        </div>
+                                        <div [hidden]="reclave.valid || (reclave.pristine && !f.submitted)">
+                                            Confirmar clave debe ser igual a 'Clave'.
+                                        </div>
+                                    </div>
+                                    <!--<div *ngIf="f.submitted && !reclave.valid" class="help-block with-errors">Confirmar clave no puede estar vacío.</div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <div class="form-group">
+                                    <input type="checkbox" [(ngModel)]="model.terms" #terms="ngModel" name="terms" required data-required-error="Debe aceptar los términos y condiciones para continuar.">                                    Acepto <a class="link" target="_blank" href="">términos y condiciones</a>
+                                    <!--<div class="help-block with-errors"></div>-->
+                                    <!--<div *ngIf="!terms.valid" class="help-block with-errors">Debe aceptar los términos y condiciones para continuar.</div>-->
+                                    <div *ngIf="terms.errors && (terms.dirty || terms.touched)" class="with-errors errors">
+                                        <div [hidden]="!terms.errors || (terms.pristine && !f.submitted)">
+                                            Debe aceptar los términos y condiciones para continuar.
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <button type="submit" class="btn btn-success btn-block" name="register-button"><i class="fa fa-check"></i>  Registrar cuenta de usuario</button>
+                                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                                />
+                            </div>
+                            <div class="col-md-4">
+                                <button [routerLink]="['/login']" class="btn btn-default" name="cancel-button"><i class="fa fa-remove"> Cancelar</i></button>
+                            </div>
+                        </div>
+                        <!--<button [disabled]="loading" type="submit" class="btn btn-success btn-submit-registro" name="registro-button"><i class="fa fa-check"> Registrar cuenta de usuario</i></button>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

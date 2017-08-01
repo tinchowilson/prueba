@@ -1,0 +1,354 @@
+<div class="sidebar-mini skin-blue-light sidebar-collapse">
+    <div class="row-offcanvas row-offcanvas-right">
+        <div class="wrapper" id="wrapper">
+            <menu-header></menu-header>
+            <!-- Inner sidebar -->
+
+            <div class="overlay ç"></div>
+
+            <div id="page-content-wrapper" class="content-wrapper">
+                <div class="alert alert-sin-refrescar alert-success alert-dismissible animated fadeInDown alert-popup hidden">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5>
+                        <p class="mensaje">
+                        </p>
+                    </h5>
+                </div>
+
+
+                <section class="content-header">
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12">
+                            <h1><i class="fa fa-file"></i> Comprobantes recibidos <small>Listado</small></h1>
+                        </div>
+                        <div class="col-md-8 col-xs-12">
+
+                            <div class="row">
+                                <div class="col-md-8 pull-left">
+                                    <div id="herramientas-form-pjax" data-pjax-container="" data-pjax-push-state data-pjax-timeout="1000">
+                                        <form id="herramientas-form" action="/panelsandbox/comprobante/listado-recibidos" method="post" data-pjax>
+                                            <input type="hidden" name="_csrf" value="TTd5Q3dXb1B1TS0AThIcKSdyKXU/ZCAgN3Y.OUIGGmEqBEEmRDUdKQ==">
+                                            <input type="hidden" id="herramientasform-accion" name="HerramientasForm[accion]">
+
+                                            <div id="modal-periodo" class="fade modal" role="dialog" tabindex="-1">
+                                                <div class="modal-dialog modal-sm">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            <h4 class="text-left">Seleccione un período</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row text-left">
+                                                                <div class="col-xs-12">
+                                                                    <div class="form-group field-herramientasform-fecha_m required">
+                                                                        <label class="control-label" for="herramientasform-fecha_m">Mes</label>
+                                                                        <select id="herramientasform-fecha_m" class="form-control" name="HerramientasForm[fecha_m]">
+                                                                            <option value="01">Enero</option>
+                                                                            <option value="02">Febrero</option>
+                                                                            <option value="03">Marzo</option>
+                                                                            <option value="04">Abril</option>
+                                                                            <option value="05">Mayo</option>
+                                                                            <option value="06">Junio</option>
+                                                                            <option value="07" selected>Julio</option>
+                                                                            <option value="08">Agosto</option>
+                                                                            <option value="09">Septiembre</option>
+                                                                            <option value="10">Octubre</option>
+                                                                            <option value="11">Noviembre</option>
+                                                                            <option value="12">Diciembre</option>
+                                                                        </select>
+                                                                        <div class="help-block"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-12">
+                                                                    <div class="form-group field-herramientasform-fecha_a required">
+                                                                        <label class="control-label" for="herramientasform-fecha_a">Año</label>
+                                                                        <select id="herramientasform-fecha_a" class="form-control" name="HerramientasForm[fecha_a]">
+                                                                            <option value="2017" selected>2017</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2009">2009</option>
+                                                                            <option value="2008">2008</option>
+                                                                        </select>
+                                                                        <div class="help-block"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="add-headers-csv-content">
+                                                                <div class="form-group field-herramientasform-add_headers_csv">
+                                                                    <input type="hidden" name="HerramientasForm[add_headers_csv]" value="0"><label><input type="checkbox" id="herramientasform-add_headers_csv" name="HerramientasForm[add_headers_csv]" value="1"> Agregar cabeceras</label>
+                                                                    <div class="help-block"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="text-right">
+                                                                <img class="modal-logo pull-left" src="/panelsandbox/img/Logotipo_C4B.png" alt="">                                                                <button type="button" class="btn btn-primary" onclick="confirmarFecha()"><i class="fa fa-check"></i>  Aceptar</button>                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!--<div id="botones-herramientas">
+                                                    <a class="btn btn-primary btn-sm" href="/panelsandbox/comprobante/importar"><i class="fa fa-upload"></i>  Importar</a>                <a class="btn btn-primary btn-sm" href="/panelsandbox/comprobante/nuevo-recibido"><i class="fa fa-plus"></i>  Cargar recibido</a>             
+                                                </div>-->
+                                        </form>
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-4 text-right">
+        <div class="btn-group">
+<button id="w0" class="btn-primary btn-sm btn-herramienta-exportar btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file"></i>  Exportar <span class="caret"></span></button>
+
+<ul id="w1" class="dropdown-menu"><li><a class="btn-exportar" href="#" data-accion="exportarComprobantesXml()" tabindex="-1"><i class="fa fa-download"></i>  Exportar a XML</a></li>
+<li><a class="btn-exportar" href="#" data-accion="exportarComprobantesCsv()" tabindex="-1"><i class="fa fa-download"></i>  Exportar a CSV</a></li></ul>
+</div>    </div>-->
+                            </div>
+
+
+                            <div id="modal-resumen" class="fade modal" role="dialog" tabindex="-1">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4><i class="fa fa-file"></i> Resumen <small>Este proceso puede tardar varios minutos, por favor espere.</small></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div id="resumen"></div>
+                                            <hr>
+                                            <div class="text-right">
+                                                <img class="modal-logo pull-left" src="/panelsandbox/img/Logotipo_C4B.png" alt="">                                                <a id="btn-pdf-resumen" class="btn btn-primary" href="#" target="_blank"><i class="fa fa-file-pdf-o"></i>  Descargar en PDF</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="modal-generar-archivos-rg-3685" class="fade modal" role="dialog" tabindex="-1">
+                                <div class="modal-dialog ">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="text-left"><i class="fa fa-file"></i> Archivos Rg 3685</h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div id="archivos-rg-3685" class="modal-overflow text-left"></div>
+
+                                            <hr>
+
+                                            <div class="text-right">
+                                                <img class="modal-logo pull-left" src="/panelsandbox/img/Logotipo_C4B.png" alt="">
+                                                <div class="clearfix"></div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="modal-resumen-buscar" class="fade modal" role="dialog" tabindex="-1">
+                                <div class="modal-dialog ">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4><i class="fa fa-file"></i> Resumen</h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div id="resumenes" class="modal-overflow"></div>
+
+                                            <hr>
+
+                                            <div class="text-right">
+                                                <img class="modal-logo pull-left" src="/panelsandbox/img/Logotipo_C4B.png" alt="">
+                                                <div class="clearfix"></div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="content">
+                    <div class="box box-solid marginBottom20">
+                        <div class="box-body noPadding">
+
+                            <div class="comprobante-recibidos-search">
+
+                                <div id="search-pjax-recibidos" data-pjax-container="" data-pjax-push-state data-pjax-timeout="1000">
+
+                                    <form (ngSubmit)="changeCountPerPage()" #fsearch="ngForm">
+                                        <div class="divFiltros " id="divFiltrosListadoRecibidos">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <div class="row" ngModelGroup="filtro" #filtro="ngModelGroup">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group field-comprobantesearch-nombremostrar">
+                                                                <label class="control-label" for="ReceptorNombre">Nombre / Razón social</label>
+                                                                <input type="text" [(ngModel)]="model.Filtro.EmisorNombre" #ReceptorNombre="ngModel" class="form-control" name="ReceptorNombre">
+
+                                                                <div class="help-block"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group field-comprobantesearch-docnro">
+                                                                <label class="control-label" for="comprobantesearch-docnro">Documento</label>
+                                                                <input type="text" [(ngModel)]="model.Filtro.DocNro" #ReceptorDocNro="ngModel" class="form-control" name="ReceptorDocNro">
+
+                                                                <div class="help-block"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group field-comprobantesearch-cbtenro">
+                                                                <label class="control-label" for="comprobantesearch-cbtenro">Nro. comprobante</label>
+                                                                <input type="text" [(ngModel)]="model.Filtro.CbteNro" #CbteNro="ngModel" class="form-control" name="CbteNro">
+
+                                                                <div class="help-block"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="form-group field-comprobantesearch-cbtetipo">
+                                                                <label class="control-label" for="comprobantesearch-cbtetipo">Tipo</label>
+                                                                <select [(ngModel)]="model.Filtro.CbteTipo" #CbteTipo="ngModel" class="form-control" name="CbteTipo">
+                                                                    <option *ngFor="let i of invoiceTypeList" [value]="i.AfipId">{{i.Nombre}}</option>
+                                                                </select>
+                                                                <div class="help-block"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="form-group field-comprobantesearch-cae">
+                                                                <label class="control-label" for="comprobantesearch-cae">CAE / CAI</label>
+                                                                <input type="text" [(ngModel)]="model.Filtro.CAE" #CAE="ngModel" class="form-control" name="CAE">
+
+                                                                <div class="help-block"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group field-comprobantesearch-periodo">
+                                                                <label class="control-label" for="comprobantesearch-periodo">Periodo</label>
+                                                                <div id="comprobantesearch-periodo-recibido-container" class="drp-container input-group">
+                                                                    <!--<span class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-calendar"></i>
+                                                                    </span>
+                                                                    <span class="form-control text-right">
+                                                                    <span class="pull-left">
+                                                                        <span class="range-value"></span>
+                                                                    </span>
+                                                                    <b class="caret"></b>
+                                                                    <input type="hidden" [(ngModel)]="model.Filtro.CbteFch" #CbteFch="ngModel" class="form-control" name="CbteFch" value="" data-krajee-daterangepicker="daterangepicker_8c12a0ed">
+                                                                    </span>-->
+                                                                    <my-date-range-picker name="mydaterange" [options]="myDateRangePickerOptions"
+                                                                    [(ngModel)]="dateRange" required></my-date-range-picker>
+                                                                </div>
+
+                                                                <div class="help-block"></div>
+                                                            </div>
+                                                        </div>
+                                                        <!--<div class="col-md-2">
+                                                            <div class="form-group field-comprobantesearch-leidoenviado">
+                                                                <label class="control-label" for="comprobantesearch-leidoenviado">Estado leído</label>
+                                                                <select [(ngModel)]="model.Filtro.EstadoLeido" #EstadoLeido="ngModel" class="form-control" name="EstadoLeido">
+                                                                    <option value=""></option>
+                                                                    <option value="1">Leído</option>
+                                                                    <option value="2">No Leído</option>
+                                                                </select>
+
+                                                                <div class="help-block"></div>
+                                                            </div>
+                                                        </div>-->
+                                                        <div class="col-md-2">
+                                                            <div class="form-group field-comprobantesearch-cae">
+                                                                <label class="control-label" for="PtoVta">Punto de venta</label>
+                                                                <input type="text" [(ngModel)]="model.Filtro.PtoVta" #PtoVta="ngModel" class="form-control" name="PtoVta">
+
+                                                                <div class="help-block"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2" style="margin-top: 22px;">
+                                                    <button type="submit" class="btn btn-sm btn-default"><i class="fa fa-search"></i>  Buscar</button>                                                    </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="box box-solid">
+                        <div class="box-body noPadding">
+                            <ag-grid-angular style="width: 100%; height: 400px;" class="ag-bootstrap" [gridOptions]="gridOptions">
+                            </ag-grid-angular>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-3 col-xs-6">
+                                    Mostrando <strong>{{model.From}}</strong> al <strong>{{model.To}}</strong> de <strong>{{model.Total}}</strong>
+                                </div>
+                                <div class="col-md-3 col-xs-6">
+                                    <select id="w7" class="form-control inline" [(ngModel)]="model.PerPage" #PerPage="ngModel" name="perPage" style="width: 30%"
+                                        (change)="changeCountPerPage()">
+                                        <option value="2">2</option>
+                                        <option value="5" selected="">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                    </select> <label for="w7">items</label>
+                                </div>
+                                <div class="col-md-6 col-xs-12 text-right">
+                                    <ul class="pagination footer-pagination" style="margin: 0">
+                                        <li class="prev"><a (click)="prevPage()" style="cursor: pointer">«</a></li>
+                                        <li *ngFor="let a of totalPage; let index = index;" [class.active]="index + 1 === activePage">
+                                            <a (click)="getPage(index + 1)" style="cursor: pointer">{{index + 1}}</a>
+                                        </li>
+                                        <li class="next"><a (click)="nextPage()" style="cursor: pointer">»</a></li>
+                                    </ul>
+                                    <!--<div class="grid-toolbar-export">
+                                        <div class="btn-group">
+                                            <button id="w5" class="btn btn-primary pull-right btn-sm dropdown-toggle" title="Exportar" data-toggle="dropdown"><i class="glyphicon glyphicon-cloud-download"></i> Exportar tabla <span class="caret"></span></button>
+
+                                            <ul id="w6" class="dropdown-menu dropdown-menu-right">
+                                                <li role="presentation" class="dropdown-header">Exportar este listado</li>
+                                                <li title="Portable Document Format"><a class="export-pdf" href="#" data-format="application/pdf" tabindex="-1"><i class="text-danger fa fa-file-pdf-o"></i> PDF</a></li>
+                                                <li title="Microsoft Excel 95+"><a class="export-xls" href="#" data-format="application/vnd.ms-excel" tabindex="-1"><i class="text-success fa fa-file-excel-o"></i> Excel</a></li>
+                                            </ul>
+                                        </div>
+                                        <form class="kv-export-form" action="/panelsandbox/gridview/export/download" method="post"
+                                            style="display:none" target="kvDownloadDialog">
+                                            <input type="hidden" name="_csrf" value="X2lYTzNHd1pnEwwMCgIEIzUsCHl7dDgqJSgfNQYWAms4WmAqACUFIw==">
+                                            <input type="hidden" name="export_filetype">
+                                            <input type="hidden" name="export_filename">
+                                            <input type="hidden" name="export_mime">
+                                            <input type="hidden" name="export_config">
+                                            <input type="hidden" name="export_encoding" value="utf-8">
+                                            <textarea name="export_content"></textarea>
+                                        </form>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+

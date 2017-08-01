@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="col-md-5 col-sm-6 col-xs-12">
+        <div class="row highlight logo-area">
+            <div class="col-xs-12 text-center">
+                <img class="login-logo test" src="/paneltest/img/test-logo.png" alt=""> <br>
+                <img class="login-logo" src="/paneltest/img/Logotipo_C4B_blanco.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="container-top50 col-md-5 col-sm-5 col-xs-12 col-md-offset-1">
+        <div class="site-registro">
+            <div class="box box-info">
+                <div class="box-header with-border text-center">
+                    <h4 class="box-title">Bienvenidos a Multifacturas
+                    </h4>
+                </div>
+                <form data-toggle="validator" (ngSubmit)="flogin.form.valid && login()" #flogin="ngForm" novalidate>
+                    <div class="box-body" style="padding: 15px">
+                        <h5>Ingrese sus datos para comenzar</h5>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group" [ngClass]="{ 'has-error': flogin.submitted && !email.valid }">
+                                    <div class="input-group"><span class="input-group-addon">
+                                    <i class="fa-fw fa fa-envelope"></i> </span>
+                                        <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required placeholder="Email"></div>
+                                    <div *ngIf="flogin.submitted && !email.valid" class="help-block">Email no puede estar vacío.</div>
+                                </div>
+                            </div>
+                            <!--<div class="col-md-6 col-xs-12">
+                            <div class="form-group">
+                                    <div class="input-group"><span class="input-group-addon"><i class="fa-fw fa fa-envelope"></i> </span>
+                                    <input type="email" [(ngModel)]="model.email" #email="ngModel" id="registro-email" class="form-control" name="email" placeholder="Email" required
+                                        data-required-error="Email no puede estar vacío." 
+                                        data-type-error="Email no es una dirección de correo válida.">
+                                    </div>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>-->
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group" [ngClass]="{ 'has-error': flogin.submitted && !password.valid }">
+                                    <div class="input-group"><span class="input-group-addon">
+                                    <i class="fa-fw fa fa-lock"></i> </span>
+                                        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Clave"></div>
+                                    <div *ngIf="flogin.submitted && !password.valid" class="help-block">Clave no puede estar vacío.</div>
+                                </div>
+                            </div>
+                            <!--<div class="col-md-6 col-xs-12">
+                            <div class="form-group">
+                                
+                                <div class="input-group"><span class="input-group-addon"><i class="fa-fw fa fa-lock"></i> </span>
+                                <input type="password" id="clave" [(ngModel)]="model.reclave" #reclave="ngModel" class="form-control" name="reclave" placeholder="Clave" required
+                                data-required-error="Confirmar clave no puede estar vacío."
+                                data-match="#clave" data-match-error="Confirmar clave debe ser igual a 'Clave'.">
+                                </div>
+
+          
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-success btn-block" name="login-button"><i class="fa fa-sign-in"></i>  Ingresar</button>
+                            </div>
+                            <div class="col-md-6 text-right" style="margin-top: 8px;">
+                                <a href="/paneltest/site/recuperar-clave">¿No recuerda su clave?</a>
+                            </div>
+                        </div>
+                        <strong class="line-o">o</strong>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a class="btn btn-primary btn-block" [routerLink]="['/register']"><i class="fa fa-edit"></i>  Registrarse como nuevo usuario</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer text-center" style="padding: 15px">
+                        <a href="/paneltest/site/terminos-y-condiciones" target="_blank">Ver términos y condiciones</a>
+                    </div>
+                    <!--<div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <input type="checkbox" [(ngModel)]="model.terms" #terms="ngModel" name="terms" required 
+                                data-required-error="Debe aceptar los términos y condiciones para continuar.">
+                                    Acepto <a class="link"  target="_blank" href="">términos y condiciones</a>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <!--<div class="panel-footer text-center">
+                    <button [disabled]="loading" type="submit" class="btn btn-success btn-submit-registro" name="registro-button"><i class="fa fa-check"> Registrar cuenta de usuario</i></button>
+                    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                    <button [routerLink]="['/login']" class="btn btn-default" name="registro-button"><i class="fa fa-remove"> Cancelar</i></button>
+                </div>-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
